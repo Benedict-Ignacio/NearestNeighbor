@@ -69,19 +69,24 @@ double print_features(const std::vector<std::vector<double>>& database, const st
     return success;
 }
 
-int main(int arg, char* argv[]) {
-    std::string file = argv[1];
-    int algorithm = std::stoi(argv[2]);
+int main() {
+    std::string file;
+    int algorithm;
     std::ifstream data;
+
+    std::cout << "Welcome to Benedict Ignacio's Feature Selection Algorithm." << std::endl;
+    std::cout << "Type in the name of the file to test : ";
+    std::cin >> file;
+    std::cout << std::endl << "Type the number of the algorithm you want to run." << std::endl << std::endl;
+    std::cout << "\t1) Forward Selection" << std::endl << "\t2) Backward Elimination" << std::endl << std::endl;
+    std::cin >> algorithm;
+    std::cout << std::endl;
 
     // Validates if file can be opened; if not, exit early
     data.open(file);
     if (!data.is_open()) {
         std::cout << "Error reading " << file << std::endl;
         return 1;
-    }
-    else {
-        std::cout << "Successfully read " << file << std::endl;
     }
 
     // Reads in the data from the file and incorporates them into a database
